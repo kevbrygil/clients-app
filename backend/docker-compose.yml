@@ -1,0 +1,28 @@
+services:
+  web:
+    build: .
+    # First, run the DB initialization script, then start the Gunicorn server with hot-reloading.
+    command: bash -c "chmod a+x ./run.sh && ./run.sh && gunicorn --reload --workers 1 --bind 0.0.0.0:5000 main:app"
+    volumes:
+      - .:/usr/src/app
+    ports:
+      - "5000:5000"
+    depends_on:
+      - postgres
+    env_file:
+      - .env
+    environment:
+      - DB_HOST=postgres
+  postgres:
+    image: postgres:16-alpine
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    environment:
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+      POSTGRES_DB: ${DB_NAME}
+    ports:
+      - "${DB_PORT}:5432"
+
+volumes:
+  postgres_data:

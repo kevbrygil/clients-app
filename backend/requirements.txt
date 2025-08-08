@@ -1,0 +1,7 @@
+falcon
+falcon-cors
+gunicorn
+marshmallow
+psycopg2-binary
+SQLAlchemy
+SQLAlchemy-Utils

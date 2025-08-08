@@ -1,0 +1,201 @@
+{
+	"info": {
+		"_postman_id": "b0681623-8452-4491-ae06-c76b2f1f8bf2",
+		"name": "Falcon",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "268102"
+	},
+	"item": [
+		{
+			"name": "Login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\"grant_type\": \"password\",\r\n\"email\": \"admin@challenge.com\",\r\n\"password\": \"123456789\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/v1/oauth/token",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"v1",
+						"oauth",
+						"token"
+					]
+				},
+				"description": "Requests for testing  \n\n``` json\n{\"grant_type\": \"password\",\"email\": \"admin@challenge.com\",\"password\": \"123456789\"}\n{\"grant_type\": \"password\",\"email\": \"viewer@challenge.com\",\"password\": \"123456789\"}\n\n ```"
+			},
+			"response": []
+		},
+		{
+			"name": "customers",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000/v1/customers",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"v1",
+						"customers"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "customers by id",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000/v1/customers/1d300b3f-22a1-4954-89ff-452021025560",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"v1",
+						"customers",
+						"1d300b3f-22a1-4954-89ff-452021025560"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "customers create",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"company_name\": \"Miguel\",\r\n    \"person_type\": \"Física\",\r\n    \"rfc\": \"TARG880204T29\",\r\n    \"legal_representative\": \"GIL RIOS\",\r\n    \"email\": \"migue\",\r\n    \"phone\": \"9871074239\",\r\n    \"document\": \"Falta\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/v1/customers",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"v1",
+						"customers"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "customers PUT",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"company_name\": \"Miguel\",\r\n    \"person_type\": \"Física\",\r\n    \"rfc\": \"TARG880204T29\",\r\n    \"legal_representative\": \"GIL RIOS\",\r\n    \"email\": \"miguel@gmail.com\",\r\n    \"phone\": \"9871074239\",\r\n    \"document\": \"Faltaria\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/v1/customers/d9942912-c206-4a22-b167-c10aa0797e2b",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"v1",
+						"customers",
+						"d9942912-c206-4a22-b167-c10aa0797e2b"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "customers DELETE",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000/v1/customers/afce8389-ac61-4da8-a6b7-289b1cdd6c19",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"v1",
+						"customers",
+						"afce8389-ac61-4da8-a6b7-289b1cdd6c19"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "{{auth_falcon}}",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "auth_falcon",
+			"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzUxMiJ9.eyJ1c2VyX2lkIjoiOTI2ZDU1NzUtYTk1Yi00MzQ0LWJiYjktYjBmNmRkZTIzODRkIiwicm9sZSI6IjQ3YjgxODNhLWYxMjktNDU0YS05ZTVjLTI1Njk4NDMzZDgwMyIsInJvbGVfbmFtZSI6ImFkbWluIiwiZXhwIjoxNzU0Njc2NDYzLCJpYXQiOjE3NTQ2NzU1NjMsImF1ZCI6ImNoYWxsZW5nZSIsImlzcyI6IiIsInR5cGUiOiJhY2Nlc3NfdG9rZW4ifQ.v8bXZi2TfjP_DgSE3OfhH5-W6n2q1cM_bPSrf8yVnOWSTdIHqSjK3-5W9oTCAwMyabwZihzUKs1E6-pba1BHxqIWNt_pHYRnNDtoYlF3Xli_WiLJBxPZ28kPe6v3neDmT47PjSQqhDH7xPe2iFY7CxGxqxsXz1P7umOQhTuSDCjxH7DV2KlkaFlB8f91FTJYamt5ygb720PzDDWsay_l-RjBgteJxZopmccWWDbUMTxbfjFcq6M7qjJ_uW8OR9aZqaPgLUy6zdjkcn3VWXz6FDKopmkqK9azp5z7HZ714_7hyJ55tDkCqCFycRpFSncDithRfmYLv4ici_fRY1ymVm9mztLfDE18rCr5sUe5Eguk2IAFy9TgQmXOF86ae_5RoVSkYU3_9FRuGVxt8lq1-G6OroqXi134-fa-EitoFL9fr8S7IjoRSH0Z0vSh1vHnHYdXP96fW5XCERHYB1nIaxtRp-G4h-esfQjbDZSqz3GUKqLABZM8IU1_dE52nCqpsecC34-2ifyDTSqA2IHdhurIe11eHFP89JMK1btyrEfKXagVf_7tTmpasVcsjQZ4rIpO2No5PK0wMDKHCUjn03W490jfp_EydChg26JPfQxFEk77P5mGaBexOVl6MvymH4__xM4zsrFVN_h2YRRNYQ0UsPS1eJUhXzkPH928k3U",
+			"type": "string"
+		}
+	]
+}
