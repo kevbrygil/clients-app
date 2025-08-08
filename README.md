@@ -56,11 +56,11 @@ It provides a full suite of well known enterprise-level persistence patterns, de
 
 ### Instalación
 
-Ver archivo install-backend.pdf [Click Aquí](github.com/kevbrygil/clients-app/blob/main/install-backend.pdf)
+Ver archivo install-backend.pdf [Click Aquí](https://github.com/kevbrygil/clients-app/blob/main/install-backend.pdf)
 
 ### Documentación
 
-Ver archivo api-docs.pdf [Click Aquí](github.com/kevbrygil/clients-app/blob/main/api-docs.pdf)
+Ver archivo api-docs.pdf [Click Aquí](https://github.com/kevbrygil/clients-app/blob/main/api-docs.pdf)
 
 ### POSTMAN
 [Documentacion](https://documenter.getpostman.com/view/268102/2sB3BDLXRP)
