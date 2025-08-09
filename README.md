@@ -81,6 +81,10 @@ Ver archivo Falcon.postman_collection.json
 
 **Typescript**: Nos brinda a nuestro proyecto un mejor orden en cuestion de tipado y detectar rapidamente errores en nuestro editor.
 
+**lint**: Es una herramienta de programación, que nos permite detectar código confuso ó incompatible entre distintas arquitecturas. Más explicitamente nos permite detectar errores de programación que solemos producir.
+
+**Prettier**: Lo que ofrece esta herramienta es tomar nuestro codigo y re-formatearlo en base a las configuraciones definitas en el archivo .prettierrc.js
+
 ### Requisitos para frontend
 
 **Nodejs**: Se probó con la versión 22.16.0, sino cuenta con alguno, se sugiere usar NVM para usar multiples versiones.
