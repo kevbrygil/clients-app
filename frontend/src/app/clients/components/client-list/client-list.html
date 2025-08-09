@@ -1,0 +1,89 @@
+<mat-toolbar color="primary">
+  <span>Lista de Clientes</span>
+  <span class="spacer"></span>
+  <button mat-icon-button (click)="logout()">
+    <mat-icon>exit_to_app</mat-icon>
+  </button>
+</mat-toolbar>
+
+<div class="container">
+  <div class="actions-container">
+    @if(userIsAdmin) {
+    <button mat-fab extended color="primary" (click)="navigateToCreateClient()">
+      <mat-icon>add</mat-icon>
+      Crear Cliente
+    </button>
+    }
+  </div>
+  @if (clients$ | async; as clients) {
+    <div class="mat-elevation-z8">
+      <table mat-table [dataSource]="clients.data.items" class="green-table">
+        <ng-container matColumnDef="company_name">
+          <th mat-header-cell *matHeaderCellDef>Razón Social</th>
+          <td mat-cell *matCellDef="let client">{{ client.company_name }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="person_type">
+          <th mat-header-cell *matHeaderCellDef>Tipo de persona</th>
+          <td mat-cell *matCellDef="let client">{{ getPersonType(client.person_type) }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="rfc">
+          <th mat-header-cell *matHeaderCellDef>RFC</th>
+          <td mat-cell *matCellDef="let client">{{ client.rfc }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="legal_representative">
+          <th mat-header-cell *matHeaderCellDef>
+            Nombre del Representante Legal
+          </th>
+          <td mat-cell *matCellDef="let client">{{ client.legal_representative }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="email">
+          <th mat-header-cell *matHeaderCellDef>Email</th>
+          <td mat-cell *matCellDef="let client">{{ client.email }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="phone">
+          <th mat-header-cell *matHeaderCellDef>Teléfono</th>
+          <td mat-cell *matCellDef="let client">{{ client.phone }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="document">
+          <th mat-header-cell *matHeaderCellDef>Documento</th>
+          <td mat-cell *matCellDef="let client">{{ client.document }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="actions">
+          <th mat-header-cell *matHeaderCellDef>Acciones</th>
+          <td mat-cell *matCellDef="let client">
+            @if(userIsAdmin) {
+              <button
+                mat-icon-button
+                color="primary"
+                (click)="navigateToEditClient(client.id)"
+                aria-label="Editar cliente"
+              >
+                <mat-icon>edit</mat-icon>
+              </button>
+              <button
+                mat-icon-button
+                color="warn"
+                (click)="deleteClient(client.id, client.company_name)"
+                aria-label="Eliminar cliente"
+              >
+                <mat-icon>delete</mat-icon>
+              </button>
+            }
+          </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+      </table>
+    </div>
+  } @else {
+    <mat-spinner></mat-spinner>
+  }
+</div>

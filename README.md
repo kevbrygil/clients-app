@@ -71,3 +71,127 @@ Ver archivo Falcon.postman_collection.json
 
 - TESTS Unitarios
 - Actualiza, Eliminar y Búsqueda por ID (Customer, User, Role)
+
+
+## Frontend
+
+**Angular 20**: Por requerimientos de la evaluación, el proyecto Frontend esta desarrollado en base al framework de Angular. Angular 20, trae varias mejoras significativas. Entre las más destacadas se encuentran la eliminación de Zone.js para la detección de cambios, reemplazándola por un sistema de reactividad basado en señales.
+
+**Material**: Nos ofrece un repositorio repleto de componentes, que por consiguiente nos permite diseñar componentes web personalizados. Por estas ventajas descritas es que se incluyó en el proyecto.
+
+**Typescript**: Nos brinda a nuestro proyecto un mejor orden en cuestion de tipado y detectar rapidamente errores en nuestro editor.
+
+### Requisitos para frontend
+
+**Nodejs**: Se probó con la versión 22.16.0, sino cuenta con alguno, se sugiere usar NVM para usar multiples versiones.
+
+**NPM**: Se probó con la versión 10.9.2
+
+### Deploy Frontend
+Podemos compilar con el siguiente script(debe tener en cuenta la configuracion de la ruta de la api en los environments files):
+
+```
+npm run build
+```
+
+De ahi podemos configurar nuestro servidor con el servicio de Nginx, parecido a esta configuracion:
+
+server {
+    listen 80;
+    server_name challenge.com www.challenge.com;
+
+    # Define the root directory for your static files
+    root /var/www/mysitechallenge/static;
+
+    location / {
+        try_files $uri $uri/ =404;
+    }
+
+    access_log /var/log/nginx/challenge.com.access.log;
+    error_log /var/log/nginx/challenge.com.error.log;
+
+}
+
+### Deploy Recomendado en ambos (back y front)
+
+Se puede usar AWS o Azure con la integración continua (CI/CD) en base a los pipelines, por lo que nos garantiza la acelaración del desarrollo y tener el codigo siempre disponible en nuestros entornos.
+
+### Instalación
+
+1.- Clone el repositorio
+
+```
+git clone https://github.com/kevbrygil/clients-app.git
+```
+
+2.- Dentro de la carpeta del repositorio, dirijase a la carpeta frontend e instale las librerias necesarias para la aplicacion web.
+
+```
+cd frontend
+npm install
+```
+
+3.- Si tiene una ruta diferente al puerto del api propuesto en el backend, dirijase al archivo frontend/src/environments/environment.ts y agregue la ruta de la API de la aplicación (la variable debe llamarse apiUrl)
+
+```
+export const environment = {
+  production: false,
+  apiUrl: 'http://localhost:5000/v1'
+};
+```
+
+4.- Ejecute la web app en la consola
+
+```
+cd frontend
+ng serve -o
+```
+ó tambien:
+
+```
+cd frontend
+npm run start
+```
+
+5.- Acceder al sitio localmente
+
+```
+http://localhost:4200/  #Puede variar segun los puertos disponibles
+```
+
+### Explicación de la interfaz
+
+#### Iniciar sesión o registrarse
+
+Se realizar una autentificacion en base a JWT, para obtener un inicio de sesión y navegación de manera segura.
+
+<img src="./public/inicio-sesion.png" width="300">
+
+
+#### Pantalla inicio
+
+Desde aqui puedes ver la lista de todos los clientes registrados en el sistema. Asi como agregar nuevos clientes, modificar o eliminar.
+Existen roles de usuario admin y viewer(descritos en el documento pdf del backend). El backend si se corre en docker(vea el manual de instalación del backend) nos crea dos usuarios para autentificarse:
+
+Email: admin@challenge.com
+Password: "123456789"
+
+Email: viewer@challenge.com
+Password: "123456789"
+
+Cabe mencionar que para la consulta y creación del cliente lo pueden realizar todos los usuarios(Viewer y admin) pero para editar o eliminarlos solo esta permitido el usuario admin.
+
+<img src="./public/pantalla_inicio.png" width="300">
+
+
+#### Pantalla Crear Cliente
+
+<img src="./public/nuevo.png" width="300">
+
+#### Pantalla Editar Cliente
+
+<img src="./public/editar.png" width="300">
+
+#### Eliminar Cliente
+
+<img src="./public/eliminar.png" width="300">

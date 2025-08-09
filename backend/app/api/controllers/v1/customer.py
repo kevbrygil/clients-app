@@ -37,7 +37,7 @@ class Customer:
             resp.status = falcon.HTTP_400
             resp.context['result'] = response_error({}, str(exc), 'get', req.path)
             
-    @falcon.before(validate_scope_admin)
+    @falcon.before(validate_scope_both)
     def on_post(self, req, resp):
         """Crea un cliente"""
         try:

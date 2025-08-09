@@ -1,0 +1,29 @@
+<div class="login-container">
+  <mat-card>
+    <mat-card-title>Iniciar Sesión</mat-card-title>
+    <mat-card-content>
+      <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+        <mat-form-field appearance="fill">
+          <mat-label>Email</mat-label>
+          <input matInput formControlName="email" type="email" placeholder="tu@email.com">
+          <mat-error *ngIf="loginForm.get('email')?.hasError('required')">El email es requerido.</mat-error>
+          <mat-error *ngIf="loginForm.get('email')?.hasError('email')">Formato de email inválido.</mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+          <mat-label>Contraseña</mat-label>
+          <input matInput formControlName="password" type="password">
+          <mat-error *ngIf="loginForm.get('password')?.hasError('required')">La contraseña es requerida.</mat-error>
+        </mat-form-field>
+
+        <div *ngIf="loginError" class="error-message">
+          Usuario o contraseña incorrectos.
+        </div>
+
+        <button mat-raised-button color="primary" type="submit" [disabled]="loginForm.invalid">
+          Acceder
+        </button>
+      </form>
+    </mat-card-content>
+  </mat-card>
+</div>

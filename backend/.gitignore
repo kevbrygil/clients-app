@@ -33,7 +33,7 @@ __pycache__/
 
 # Distribution / packaging
 .Python
-env/
+
 build/
 develop-eggs/
 dist/
@@ -82,7 +82,6 @@ target/
 __pycache__/
 local_settings.py
 
-.env
 .idea/
 .nyc_output
 venv/
