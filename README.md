@@ -96,6 +96,7 @@ npm run build
 
 De ahi podemos configurar nuestro servidor con el servicio de Nginx, parecido a esta configuracion:
 
+```
 server {
     listen 80;
     server_name challenge.com www.challenge.com;
@@ -111,6 +112,7 @@ server {
     error_log /var/log/nginx/challenge.com.error.log;
 
 }
+```
 
 ### Deploy Recomendado en ambos (back y front)
 
