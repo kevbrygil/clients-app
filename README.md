@@ -165,7 +165,7 @@ http://localhost:4200/  #Puede variar segun los puertos disponibles
 
 Se realizar una autentificacion en base a JWT, para obtener un inicio de sesión y navegación de manera segura.
 
-<img src="./public/inicio-sesion.png" width="300">
+<img src="./public/inicio-sesion.png" width="400">
 
 
 #### Pantalla inicio
@@ -181,17 +181,17 @@ Password: "123456789"
 
 Cabe mencionar que para la consulta y creación del cliente lo pueden realizar todos los usuarios(Viewer y admin) pero para editar o eliminarlos solo esta permitido el usuario admin.
 
-<img src="./public/pantalla_inicio.png" width="300">
+<img src="./public/pantalla_inicio.png" width="600">
 
 
 #### Pantalla Crear Cliente
 
-<img src="./public/nuevo.png" width="300">
+<img src="./public/nuevo.png" width="600">
 
 #### Pantalla Editar Cliente
 
-<img src="./public/editar.png" width="300">
+<img src="./public/editar.png" width="600">
 
 #### Eliminar Cliente
 
-<img src="./public/eliminar.png" width="300">
+<img src="./public/eliminar.png" width="600">
